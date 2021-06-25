@@ -1,27 +1,34 @@
-# InterviewPhaseA
+# Enverus Coding Interview - T&R Phase 2 - Model A
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+This README file includes the intructions and rules required to complete the challenges presented during the interview.
 
-## Development server
+Please, refer to this focument in case of doubt.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Rules
+- You may use any IDE you are comfortable with. (e.g. WebStorm, Visual Studio Code, Atom, etc.)
+- You may use Google or API documentation sites if needed.
+- You may ask the interviewer for guidance or explanations at any time.
 
-## Code scaffolding
+# Exercises
+A final result of the application can be found at the following URL for context:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## EXERCISE 1
+- Create a new post preview component that will display a post title, body and author ID.
+- Use the new post component to replace the posts in the home-page.component.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## EXERCISE 2
+- Update the posts property of the home-page.component to use the post API instead of hardcoded posts (blog.service.ts).
+- Use the new dynamic post array instead of the hardcoded posts.
 
-## Running unit tests
+## EXERCISE 3
+- Create a new route: /post/POST_ID that will display a single post and it's comments. (comment body and email are enough)
+- The post-preview.component should link to it's post page.
+- This page should use the route params to fetch a given post using the BlogService.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## EXERCISE 4
+- Update the home-page.component and post-page.component to use the NGRX store instead of the Blog service.
+  - The actions, selectors and effects have already been coded.
+  - The reducer is incomplete.
+  - The components will need to be updated to use the store instead of the service.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
