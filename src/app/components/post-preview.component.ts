@@ -3,7 +3,7 @@ import { Component, Input } from "@angular/core";
 @Component({
     selector: 'app-post-preview',
     template: `
-        <a [routerLink]="['/', 'post', id]"><h4 class="post-title">{{ title | titlecase }}</h4></a>
+        <h4 class="post-title"><a [routerLink]="['/', 'post', id]">{{ title | titlecase }}</a></h4>
         <p class="post-body">{{ body }}</p>
     `,
     styles: [`

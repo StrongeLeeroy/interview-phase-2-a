@@ -10,20 +10,23 @@ import { Post, Comment, User } from "../blog.service";
 @Component({
     selector: 'app-post',
     template: `
+        <nav [style.margin-bottom.px]="20">
+            <a [routerLink]="['/']">HOME</a>
+        </nav>
+        <mat-divider [style.margin-bottom.px]="20"></mat-divider>
         <ng-container *ngIf="post$ | async as post">
             <h3 class="post-title">{{ post.title | titlecase }}</h3>
-            <h5 *ngIf="author$ | async as author">by {{ author.username }} ({{ author.email }})</h5>
+            <h5 class="text-subtle" *ngIf="author$ | async as author">by {{ author.username }} ({{ author.email }})</h5>
             <p class="post-body">{{ post.body }}</p>
-            <mat-divider></mat-divider>
-            <h5>Comments</h5>
         </ng-container>
         
-        <ng-container *ngFor="let comment of comments$ | async">
-            <p><small><strong>{{ comment.email }}</strong>: {{ comment.body }}</small></p>
-        </ng-container>
-
-        <mat-divider></mat-divider>
-        <a [routerLink]="['/']">HOME</a>
+        <div class="comments-wrapper">
+            <h5>Comments</h5>
+            <ng-container *ngFor="let comment of comments$ | async">
+                <p [style.margin-bottom.px]="0"><small><strong>{{ comment.email }}</strong></small></p>
+                <p class="text-subtle"><small>{{ comment.body }}</small></p>
+            </ng-container>
+        </div>
     `,
     styles: [`
         .post-title {
@@ -32,6 +35,12 @@ import { Post, Comment, User } from "../blog.service";
 
         .post-body {
             margin-top: 0;
+        }
+
+        .comments-wrapper {
+            background-color: #101010;
+            padding: 10px 20px;
+            margin-top: 30px;
         }
     `]
 })
