@@ -38,5 +38,15 @@ export class BlogEffects {
         )
     ));
 
+    loadUser$ = createEffect(() => this.actions$.pipe(
+        ofType(BlogActions.loadUser),
+        exhaustMap(action => this.posts.getUser(action.userId)
+            .pipe(
+                map(user => BlogActions.loadUserSuccess({ user })),
+                catchError(error => of(BlogActions.loadUserError()))
+            )
+        )
+    ));
+
     constructor(private actions$: Actions, private posts: BlogService, private store: Store) {}
 }

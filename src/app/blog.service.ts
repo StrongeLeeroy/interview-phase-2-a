@@ -17,6 +17,30 @@ export interface Comment {
     body: string;
 }
 
+export interface User {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    address: {
+        street: string;
+        suite: string;
+        city: string;
+        zipcode: string;
+        geo: {
+            lat: string;
+            lng: string;
+        }
+    };
+    phone: string;
+    website: string;
+    company: {
+        name: string;
+        catchPhrase: string;
+        bs: string;
+    };
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -39,5 +63,9 @@ export class BlogService {
         // TODO: Return an observable with all comments for a given post.
         // GET https://jsonplaceholder.typicode.com/posts/{POST_ID}/comments
         return this.http.get<Comment[]>(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+    }
+
+    getUser(userId: number): Observable<User> {
+        return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${userId}`);
     }
 }
