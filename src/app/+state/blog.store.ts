@@ -1,16 +1,19 @@
+import { EntityState } from "@ngrx/entity";
 import { createReducer, Action, on, createSelector, createFeatureSelector } from "@ngrx/store";
-import { Post, Comment } from "../blog.service";
-import { unique } from "../utils/unique";
-import { loadPostCommentsSuccess, loadPostsSuccess, loadPostSuccess } from "./blog.actions";
+import { Post, Comment, User } from "../blog.service";
+import { loadPostCommentsSuccess, loadPostsSuccess, loadPostSuccess, loadUserSuccess } from "./blog.actions";
+import { commentAdapter, postAdapter, userAdapter } from "./entities";
 
 export interface BlogState {
-    posts: Post[];
-    comments: Comment[];
+    posts: EntityState<Post>;
+    comments: EntityState<Comment>;
+    users: EntityState<User>;
 }
 
 export const initialBlogState: BlogState = {
-    posts: [],
-    comments: []
+    posts: postAdapter.getInitialState(),
+    comments: commentAdapter.getInitialState(),
+    users: userAdapter.getInitialState()
 };
 
 const blogReducer = createReducer(
@@ -18,17 +21,17 @@ const blogReducer = createReducer(
 
     on(loadPostsSuccess, (state, props) => ({
         ...state,
-        posts: props.posts
+        posts: postAdapter.setAll(props.posts, state.posts)
     })),
 
     on(loadPostSuccess, (state, props) => ({
         ...state,
-        posts: unique([...state.posts, props.post])
+        posts: postAdapter.addOne(props.post, state.posts)
     })),
 
     on(loadPostCommentsSuccess, (state, props) => ({
         ...state,
-        comments:  unique([...state.comments, ...props.comments])
+        comments: commentAdapter.addMany(props.comments, state.comments)
     }))
 );
 
@@ -36,7 +39,19 @@ export function reducer(state: BlogState | undefined, action: Action) {
     return blogReducer(state, action);
 }
 
+/**
+ * SELECTORS
+ */
+const postSelectors = postAdapter.getSelectors();
+const commentSelectors = commentAdapter.getSelectors();
+
 export const selectBlog = createFeatureSelector<BlogState>('blog');
-export const selectPosts = createSelector(selectBlog, state => state.posts);
-export const selectPostById = (postId: number) => createSelector(selectBlog, state => state.posts.find(post => post.id === postId));
-export const selectCommentsForPost = (postId: number) => createSelector(selectBlog, state => state.comments.filter(comment => comment.postId === postId));
+export const selectPostsState = createSelector(selectBlog, state => state.posts);
+export const selectCommentsState = createSelector(selectBlog, state => state.comments);
+export const selectUsersState = createSelector(selectBlog, state => state.users);
+
+export const selectAllPosts = createSelector(selectPostsState, postSelectors.selectAll);
+export const selectAllComments = createSelector(selectCommentsState, commentSelectors.selectAll);
+
+export const selectPostById = (postId: number) => createSelector(selectPostsState, state => state.entities[postId] || null);
+export const selectCommentsForPost = (postId: number) => createSelector(selectAllComments, state => state.filter(comment => comment.postId === postId));

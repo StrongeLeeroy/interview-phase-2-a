@@ -4,12 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { BlogEffects } from './+state/blog.effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './containers/home-page.component';
-import { EffectsModule } from '@ngrx/effects';
-import { BlogEffects } from './+state/blog.effects';
-import { StoreModule } from '@ngrx/store';
+
+
 import { reducer } from './+state/blog.store';
 
 @NgModule({

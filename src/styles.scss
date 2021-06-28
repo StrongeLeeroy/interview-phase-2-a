@@ -1,8 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 * {
     box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body {
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: rgb(27, 27, 27);
+    color: #fff;
+}
+
+a {
+    color: rgb(166, 92, 226);
+    text-decoration: none;
+    &:visited {
+        color: rgb(194, 163, 219);
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+strong {
+    font-weight: 500;
+}
+
+.text-subtle {
+    color: rgb(194, 194, 194);
 }

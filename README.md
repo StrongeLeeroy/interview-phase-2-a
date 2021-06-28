@@ -33,3 +33,6 @@ A final result of the application can be found at the following URL for context:
   - The actions, selectors, effects and reducer have already been coded and are available in the +state forlder for reference.
   - You will need to implement the action dispatch and selector assignment logic.
   - The components will need to be updated to use the store instead of the service.
+
+## EXERCISE 5
+- Update the NGRX store (reducer, actions, effects and selectors) to fetch the post author from the API, then update post-page.component to display the author name and email.
