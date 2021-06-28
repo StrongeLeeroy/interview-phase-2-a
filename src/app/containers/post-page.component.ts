@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { filter, tap } from "rxjs/operators";
+import { tap } from "rxjs/operators";
 import { loadPost, loadPostComments, loadUser } from "../+state/blog.actions";
 import { selectAuthorByPostId, selectCommentsForPost, selectPostById, selectUsersState } from "../+state/blog.store";
 import { Post, Comment, User } from "../blog.service";
