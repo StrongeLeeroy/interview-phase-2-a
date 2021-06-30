@@ -2,7 +2,7 @@
 
 This README file includes the intructions and rules required to complete the challenges presented during the interview.
 
-Please, refer to this focument in case of doubt.
+Please, refer to this document in case of doubt.
 
 # Rules
 - You may use any IDE you are comfortable with. (e.g. WebStorm, Visual Studio Code, Atom, etc.)
