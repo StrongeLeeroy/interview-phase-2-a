@@ -1,4 +1,4 @@
-# Enverus Coding Interview - T&R Phase 2 - Model A
+# Coding Interview - Phase 2 - Model A
 
 This README file includes the intructions and rules required to complete the challenges presented during the interview.
 
