@@ -10,7 +10,7 @@ Please, refer to this focument in case of doubt.
 - You may ask the interviewer for guidance or explanations at any time.
 
 # Exercises
-A final result of the application can be found at the following URL for context: (https://strongeleeroy.github.io/interview-phase-2-a/)[https://strongeleeroy.github.io/interview-phase-2-a/]
+A final result of the application can be found at the following URL for context: [https://strongeleeroy.github.io/interview-phase-2-a/](https://strongeleeroy.github.io/interview-phase-2-a/)
 
 
 ## EXERCISE 1
