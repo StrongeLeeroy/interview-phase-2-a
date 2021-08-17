@@ -14,8 +14,8 @@ A final result of the application can be found at the following URL for context:
 
 
 ## EXERCISE 1
-- Create a new **post preview component** that will display a post title, body and author ID.
-- Use this new component to replace the hardcoded posts in the home-page.component.
+- Create a new **post preview component** that will display a post title and body.
+- Use this new component to replace the hardcoded posts in the home-page.component (lines 10-11).
 
 ## EXERCISE 2
 - Update the posts property of the home-page.component to use the post API instead of hardcoded posts (blog.service.ts).
